@@ -35,9 +35,6 @@ function PostForm() {
       <button className="btn btn-success" type="submit">
         odebrat
       </button>
-      {array.map((array) => (
-        <Post posts={array} key={array} />
-      ))}
     </div>
   );
 }
