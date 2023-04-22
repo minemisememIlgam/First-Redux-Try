@@ -14,6 +14,9 @@ function PostForm() {
   const wasClicked = () => {
     setArray((prevArray) => [...prevArray, title]);
   };
+  const handleRemoveClick = (index) => {
+    setArray((prevArray) => prevArray.filter((_, i) => i !== index)); //здесь мы задаем условие что если i в массиве равняется заданному индексу то мы его в новый массив не включаем
+  };
 
   return (
     <div>
@@ -28,11 +31,18 @@ function PostForm() {
           onChange={changeInputHandler}
         ></input>
         <p>{title}</p>
+        {array.map((title) => (
+          <Post posts={title} />
+        ))}
       </div>
       <button className="btn btn-success" type="submit" onClick={wasClicked}>
         Vytvorit
       </button>
-      <button className="btn btn-success" type="submit">
+      <button
+        className="btn btn-success"
+        type="submit"
+        onClick={() => handleRemoveClick(array.length - 1)} //сюда мы пишем индекс и исключаем число если элемент по счету совпадает с индексом (в данном случае индекс это последнее число в массиве array.length -1)
+      >
         odebrat
       </button>
     </div>
