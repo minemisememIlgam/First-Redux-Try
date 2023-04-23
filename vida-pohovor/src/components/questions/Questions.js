@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 function Questions() {
   return (
     <div className="card mb-3" style={{ maxWidth: 540 }}>
@@ -19,6 +20,9 @@ function Questions() {
           </div>
         </div>
       </div>
+      <button>
+        <Link to="/">Zpet</Link>
+      </button>
     </div>
   );
 }

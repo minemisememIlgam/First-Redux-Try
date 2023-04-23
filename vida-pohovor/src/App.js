@@ -21,6 +21,10 @@ function App() {
     setStartTest(false);
   };
 
+  const wasClickedZpetOnResultPage = () => {
+    setShowResults(false);
+  };
+
   const wannaShowResults = () => {
     setShowResults(true);
   };
@@ -32,28 +36,21 @@ function App() {
     wannaShowResults,
     showResults,
     wasClickedZpet,
+    wasClickedZpetOnResultPage,
+    QuizTest,
   };
   //Context Provider это обертка и все компоненты что в ней находятся имеют доступ к одним и тем же данным (данные передабтся как value
   //Routes позволяет добавлять маршрутизацию между разными элементами)
   console.log(startTest);
   return (
     <Context.Provider value={value}>
-      {startTest ? (
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<QuizTest />} />
-          </Routes>
-          <Questions />
-          <button onClick={() => wasClickedZpet()}>Zpet</button>
-        </div>
-      ) : (
-        <div className="container">
-          <Routes>
-            <Route path="/" element={<QuizTest />} />
-            <Route path="quiz" element={<QuizResultsStat />} />
-          </Routes>
-        </div>
-      )}
+      <div className="container">
+        <Routes>
+          <Route path="/" element={<QuizTest />} />
+          <Route path="quiz" element={<QuizResultsStat />} />
+          <Route path="question" element={<Questions />} />
+        </Routes>
+      </div>
     </Context.Provider>
   );
 }
